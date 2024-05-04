@@ -1,18 +1,12 @@
 const http = require('http');
 const Koa = require('koa');
 const koaBody = require('koa-body');
-// const cors = require('@koa/cors');
+const cors = require('@koa/cors');
 const Router = require('koa-router');
 const MessagesGenerator = require('./MessagesGenerator.js');
 
 
 const app = new Koa();
-
-app.use(async (ctx, next) => {
-  ctx.set('Access-Control-Allow-Origin', '*');
-  ctx.set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
-  await next();
-});
 
 app.use(koaBody({
   text: true,
@@ -21,7 +15,7 @@ app.use(koaBody({
   json: true,
 }));
 
-// app.use(cors());
+app.use(cors());
 
 const router = new Router();
 
