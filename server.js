@@ -15,7 +15,12 @@ app.use(koaBody({
   json: true,
 }));
 
-app.use(cors());
+app.use(cors({ 
+  origin: '*',
+  credentials: true,
+  'Access-Control-Allow-Origin': true,
+  allowMethods: ['GET'],
+}));
 
 const router = new Router();
 
